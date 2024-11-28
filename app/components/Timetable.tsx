@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core'
+import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors, DragEndEvent } from '@dnd-kit/core'
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
@@ -14,13 +14,13 @@ import { useToast } from "@/hooks/use-toast"
 
 // Simulated WebSocket connection
 const socket = {
-  on: (event: string, callback: (data: any) => void) => {
+  on: (event: string, callback: (data: { type: string; message: string }) => void) => {
     // Simulate receiving updates
     setInterval(() => {
       callback({ type: 'update', message: 'Schedule updated' })
     }, 5000)
   },
-  emit: (event: string, data: any) => {
+  emit: (event: string, data: { classSessions: ClassSession[] }) => {
     console.log('Emitted:', event, data)
   }
 }
@@ -88,13 +88,13 @@ export function Timetable() {
     })
   }, [toast])
 
-  const handleDragEnd = (event: any) => {
+  const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event
 
-    if (active.id !== over.id) {
+    if (active.id !== over?.id) {
       setClassSessions((items) => {
         const oldIndex = items.findIndex((item) => item.id === active.id)
-        const newIndex = items.findIndex((item) => item.id === over.id)
+        const newIndex = items.findIndex((item) => item.id === over?.id)
 
         return arrayMove(items, oldIndex, newIndex)
       })
