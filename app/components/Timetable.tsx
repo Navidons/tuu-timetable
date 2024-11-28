@@ -125,7 +125,7 @@ export function Timetable() {
       <Card className="mt-6">
         <CardHeader>
           <CardTitle>Weekly Timetable</CardTitle>
-          <CardDescription>Manage and view the university's weekly schedule</CardDescription>
+          <CardDescription>Manage and view the university&apos;s weekly schedule</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex justify-between items-center mb-4">

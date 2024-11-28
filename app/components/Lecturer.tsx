@@ -255,7 +255,7 @@ export function Lecturer() {
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Edit Lecturer</DialogTitle>
-            <DialogDescription>Make changes to the lecturer's details.</DialogDescription>
+            <DialogDescription>Make changes to the lecturer&apos;s details.</DialogDescription>
           </DialogHeader>
           {editingLecturer && (
             <form onSubmit={(e) => {
