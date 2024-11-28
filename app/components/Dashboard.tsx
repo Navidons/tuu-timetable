@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { GraduationCap, Book, Bookmark, TrendingUp, TrendingDown, Users, Clock, Calendar, AlertTriangle, Bell } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { Tooltip } from "@/components/ui/tooltip"
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts'
-import { motion, AnimatePresence } from 'framer-motion'
+import { LineChart, Line, XAxis, ResponsiveContainer } from 'recharts'
+import { motion } from 'framer-motion'
 
 export function Dashboard() {
   const [isHovered, setIsHovered] = useState<number | null>(null);
